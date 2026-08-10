@@ -18,18 +18,42 @@ vuelo(medellin, barranquilla).
 vuelo(pasto, bogota).
 vuelo(bogota, pasto).
 
+% Hechos: vuelos indirectos
+escala(Origen, Destino) :- vuelo(Origen, Escala), vuelo(Escala, Destino).
+
+% Hechos: vuelos generales
+viaje(Origen, Destino) :- vuelo(Origen, Destino).
+viaje(Origen, Destino) :- escala(Origen, Destino).
+
+% Hechos: destinos posibles de vuelos directos
+destinos(Ciudad, Destino) :- vuelo(Ciudad, Destino).
 
 
+1.Hechos y consultas simples
 vuelo(bogota, medellin)
 true
-vuelo(bogota, DESTINO)
-DESTINO = medellin
-DESTINO = cartagena
-DESTINO = pasto
-vuelo(ORIGEN, medellin)
-ORIGEN = bogota
-vuelo(ORIGEN, bogota)
-ORIGEN = cali
-ORIGEN = pasto
-vuelo(ORIGEN, cali)
+vuelo(bogota, Destino)
+Destino = medellin
+Destino = cartagena
+Destino = pasto
+vuelo(Origen, medellin)
+Origen= bogota
+vuelo(Origen, bogota)
+Origen = cali
+Origen = pasto
+vuelo(Origen, cali)
 false
+
+2. Reglas basicas
+escala(bogota, barranquilla)
+true
+escala(cali, Destino)
+Destino = medellin
+Destino = cartagena
+Destino = pasto
+viaje(bogota, pasto)
+1true
+destinos(manizales, Destino)
+false
+destinos(manizales, Destino)
+Destino = cartagena
