@@ -1,3 +1,4 @@
+Codigo:
 % Hechos: relación entre ciudades
 ciudad(bogota).
 ciudad(medellin).
@@ -29,7 +30,8 @@ viaje(Origen, Destino) :- escala(Origen, Destino).
 destinos(Ciudad, Destino) :- vuelo(Ciudad, Destino).
 
 
-1.Hechos y consultas simples
+Ejercicio:
+1. Hechos y consultas simples
 vuelo(bogota, medellin)
 true
 vuelo(bogota, Destino)
